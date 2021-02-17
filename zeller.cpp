@@ -14,11 +14,13 @@ double day__of__week(){
   quotient((mm < 3. ? yyyy - 1. : yyyy), 100.)
  );
 }
+double explicit_form(double d, double m, double y, double c){
+    ((d + y) > 0) ? ((quotient(26 * m - 2, 10)) ? quotient(y, 4) : quotient(c, 4)) : ((2 * -1 * c));
+    return c;
+}
 double zeller(double d, double m, double y, double c){
  return neg__to__pos(remainder(
-         (d + y) ? (quotient(26 * m - 2, 10))
-         : quotient(y, 4) ? quotient(c, 4)
-         : (2 * -1 * c), 7
+        explicit_form(d, m, y, c), 7
  ));
 }
 //(define (neg-to-pos d)
@@ -45,13 +47,12 @@ double birthday(double dw){
  display(mm);display(".");
  return  yyyy;
 }
-double dd = 31.;
-double mm = 12.;
-double yyyy = 2021.;
+double dd = 4.;
+double mm = 2.;
+double yyyy = 2000.;
 int main(){
  display(birthday (day__of__week()));
  newline();
 
- std::cin.get();
  return 0;
 }
